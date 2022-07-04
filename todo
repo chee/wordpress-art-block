@@ -5,3 +5,4 @@ pause script when off screen
 DONE set iframe size when saving script
 DONE use `windowWidth` and `windowHeight` instead in scripts, and set those in the guten block properties
 1 4 9 6 0 8 8 8 8 0 2 6 0 0
+add caption attribute for figcaption
