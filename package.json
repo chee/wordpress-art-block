@@ -1,0 +1,25 @@
+{
+  "name": "art-block-cgb-guten-block",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cgb-scripts start",
+    "build": "cgb-scripts build",
+    "eject": "cgb-scripts eject"
+  },
+  "dependencies": {
+    "cgb-scripts": "1.23.1",
+    "esbuild": "^0.14.48",
+    "prismjs": "^1.28.0",
+    "react-simple-code-editor": "^0.11.2",
+    "sass": "^1.53.0"
+  },
+  "volta": {
+    "node": "14.19.3",
+    "npm": "8.13.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "uglify-js": "^3.16.1"
+  }
+}
