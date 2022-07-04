@@ -1,5 +1,5 @@
 .PHONY: default render build sync
-default: build sync
+default: build render sync
 
 build:
 	npm run build
