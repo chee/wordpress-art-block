@@ -23,7 +23,7 @@ function art_block_render($attributes, $_content)
 	$art = ''
         . '<!DOCTYPE html><script src="' . plugins_url('/dist/render.js', dirname(__FILE__)) . '"></script>'
         . '<body></body><script>' . $attributes['code'] . '</script>'
-        . '<style>body{margin: 0; padding: 0;} canvas {width: 100%!important; height:100%!important;}</style>';
+        . '<style>body{margin: 0;padding: 0}canvas{width:100%!important;height:100%!important}main{display:flex;flex-direction:column}</style>';
     $resize_script = '
     		var art_block_iframe = document.getElementById("'.$id.'");
     		function art_resize_iframe() {

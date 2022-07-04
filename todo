@@ -1,3 +1,4 @@
 make an a svg icon and set it in src/block/block.js
 DONE replace PlainText with javascript highlight code editor
 DONE set height of iframe correctly (maybe: add height and width options to block, use those to inject createCanvas)
+pause script when off screen
