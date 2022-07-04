@@ -43,13 +43,23 @@ function html(code) {
 registerBlockType("chee/art-block", {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __("Art"), // Block title.
-	icon: "art", // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	icon: (
+		<svg width="24" height="24" aria-hidden="true" focusable="false">
+			<text x="4" y="17" fill="#336699">
+				art
+			</text>
+		</svg>
+	),
 	category: "art", // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [__("art"), __("p5")],
 	attributes: {
 		code: {
 			type: "string",
 			default: "",
+		},
+		height: {
+			type: "number",
+			default: 440,
 		},
 	},
 
@@ -66,9 +76,18 @@ registerBlockType("chee/art-block", {
 	 */
 	edit: withState({
 		isPreview: false,
-	})(({ isPreview, setState, attributes, setAttributes, className }) => {
+	})(({ isPreview, setState, attributes, setAttributes }) => {
 		return (
-			<div className="wp-block-chee-art-block">
+			<div className="wp-block-art-block">
+				<InspectorControls>
+					<PanelBody title={__("Settings")}>
+						<TextControl
+							label="Height"
+							onChange={(height) => setAttributes({ height })}
+							value={attributes.height}
+						/>
+					</PanelBody>
+				</InspectorControls>
 				<BlockControls>
 					<div className="components-toolbar">
 						<button
@@ -92,7 +111,10 @@ registerBlockType("chee/art-block", {
 				<Disabled.Consumer>
 					{(isDisabled) =>
 						isPreview || isDisabled ? (
-							<SandBox html={`${html(attributes.code)}`} />
+							<iframe
+								height={attributes.height || 440}
+								srcDoc={`${html(attributes.code)}`}
+							/>
 						) : (
 							<Editor
 								value={attributes.code || ""}

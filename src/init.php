@@ -13,51 +13,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$resize_script = <<<'END'
-
-END;
-
-function art_block_render($attributes, $_content)
+function art_block_render($attributes, $content)
 {
- 	$id = "art-" . uniqid();
 	$art = ''
         . '<!DOCTYPE html><script src="' . plugins_url('/dist/render.js', dirname(__FILE__)) . '"></script>'
         . '<body></body><script>' . $attributes['code'] . '</script>'
-        . '<style>body{margin: 0;padding: 0}canvas{width:100%!important;height:100%!important}main{display:flex;flex-direction:column}</style>';
-    $resize_script = '
-    		var art_block_iframe = document.getElementById("'.$id.'");
-    		function art_resize_iframe() {
-			let height = art_block_iframe.contentDocument.body.offsetHeight;
-			if (height === 0) {
-				return
-			}
-			art_block_iframe.height = height
-			art_block_iframe.parentElement.style.height = height + "px"
-		}
-		try {
-			let resize_observer = new MutationObserver(art_resize_iframe);
-			resize_observer.observe(art_block_iframe.contentDocument.body, {
-				attributes: true,
-				attributeOldValue: false,
-				characterData: true,
-				characterDataOldValue: false,
-				childList: true,
-				subtree: true
-			} );
-		} catch (e) {}
-		art_block_iframe.addEventListener("load", art_resize_iframe);
-		art_block_iframe.contentWindow.addEventListener("load", art_resize_iframe, true)
-
-		setTimeout(art_resize_iframe, 5000);
-		setTimeout(art_resize_iframe, 2000);';
-	return sprintf(''
-		. '<div class="%s">'
-		.   '<iframe id='.$id.' srcdoc="%s"></iframe>'
-		. '</div>'
-		. '<script>'.$resize_script.'</script>',
-		'wp-block-chee-art-block',
-		htmlspecialchars($art, ENT_QUOTES)
-	);
+        . '<style>body{margin: 0;padding: 0}</style>';
+	return ''
+		. '<figure class="wp-block-art-block">'
+		. 	'<iframe'
+		.		' srcdoc="' . htmlspecialchars($art, ENT_QUOTES) . '"'
+		. 		' height="' . $attributes['height'] . '">'
+		. 	'</iframe>'
+		. (in_array('caption', $attributes) && !empty($attributes['caption'])
+			? '<figcaption>' . $attributes['caption'] . '</figcaption>'
+			: '')
+		. '</figure>';
 }
 
 

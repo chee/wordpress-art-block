@@ -1,4 +1,7 @@
-make an a svg icon and set it in src/block/block.js
+DONE make an a svg icon and set it in src/block/block.js
 DONE replace PlainText with javascript highlight code editor
 DONE set height of iframe correctly (maybe: add height and width options to block, use those to inject createCanvas)
 pause script when off screen
+DONE set iframe size when saving script
+DONE use `windowWidth` and `windowHeight` instead in scripts, and set those in the guten block properties
+1 4 9 6 0 8 8 8 8 0 2 6 0 0
