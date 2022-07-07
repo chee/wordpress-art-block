@@ -6,3 +6,10 @@ DONE set iframe size when saving script
 DONE use `windowWidth` and `windowHeight` instead in scripts, and set those in the guten block properties
 1 4 9 6 0 8 8 8 8 0 2 6 0 0
 add caption attribute for figcaption
+maybe add a attribute (or something) for shader frag and shader vert.
+	shaders in the docs are loaded from a file, but you can load shaders
+	without an external file like this:
+	let s = new p5.Shader()
+	s._vertSrc = `vert source`
+	s._fragSrc = `frag source`
+	

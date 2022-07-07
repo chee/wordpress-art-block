@@ -14,7 +14,7 @@ import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 
-const { Disabled, SandBox, SVG, Path, TextControl, PanelBody } = wp.components;
+const { Disabled, TextControl, PanelBody } = wp.components;
 const { BlockControls, InspectorControls } = wp.editor;
 const { withState } = wp.compose;
 const { __ } = wp.i18n; // Import __() from wp.i18n
