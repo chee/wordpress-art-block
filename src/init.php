@@ -22,6 +22,7 @@ function art_block_render($attributes, $content)
 	return ''
 		. '<figure class="wp-block-art-block">'
 		. 	'<iframe'
+        .       ' role="presentation"'
 		.		' srcdoc="' . htmlspecialchars($art, ENT_QUOTES) . '"'
 		. 		' height="' . $attributes['height'] . '">'
 		. 	'</iframe>'
